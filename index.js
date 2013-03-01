@@ -93,6 +93,7 @@ Gallery.prototype.add = function (file) {
   events.bind(img, 'dblclick', function (ev) {
     self.onclick(ev)
     self.change()
+    self.emit('ok')
   })
 
   // images are inserted in reverse!
