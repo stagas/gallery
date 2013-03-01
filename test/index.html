@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>gallery</title>
+    <link rel="stylesheet" href="../build/build.css">
+  </head>
+  <body>
+    <div id="result">(no image selected yet)</div>
+    <button id="show">Show gallery in a dialog</button>
+    (upload only works with a server backend)
+    <script src="../build/build.js"></script>
+    <script>
+
+    var Gallery = require('gallery')
+    var Dialog = require('component-dialog')
+    var Upload = require('component-upload')
+
+    // create a new gallery
+
+    var gallery = new Gallery()
+
+    // set path and image files
+
+    gallery.set('gallery', [
+      'cat1.jpg'
+    , 'cat2.jpg'
+    , 'cat3.jpg'
+    , 'cat4.jpg'
+    , 'cat5.jpg'
+    , 'cat6.jpg'
+    , 'cat7.jpg'
+    ])
+
+    // user clicked on a picture
+
+    gallery.on('select', function (img, i) {
+      console.log(img, i)
+    })
+
+    // picture changed
+
+    gallery.on('change', function (sel) {
+      var img = document.createElement('img')
+      img.src = sel.src
+      var result = document.getElementById('result')
+      result.innerHTML = ''
+      result.appendChild(img)
+    })
+
+    // user uploads
+
+    gallery.on('files', function (files) {
+      var file = files[0]
+      if (!file) return
+
+      // upload
+      var upload = Upload(file)
+      upload.to('/upload')
+      upload.on('end', function () {
+        // add new image to gallery and select it
+        gallery.add(file.name).select(0)
+      })
+    })
+
+    // render element
+
+    gallery.render()
+
+    // show gallery in dialog when button clicked
+
+    document.getElementById('show').onclick = function () {
+      var dialog = new Dialog(gallery.el)
+
+      // hide dialog when user
+      // chooses picture or clicks ok
+      gallery.on('ok', hide)
+      gallery.on('change', hide)
+
+      dialog
+      .closable()
+      .overlay()
+      .effect('slide')
+      .show()
+
+      function hide () { dialog.hide() }
+    }
+    </script>
+  </body>
+</html>

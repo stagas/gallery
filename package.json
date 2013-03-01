@@ -1,0 +1,10 @@
+{
+  "name": "gallery-component",
+  "repo": "stagas/gallery",
+  "description": "gallery",
+  "version": "0.0.1",
+  "keywords": ["gallery"],
+  "devDependencies": {
+    "express": "~3"
+  }
+}
