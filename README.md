@@ -9,6 +9,15 @@ The test implements one with [component/upload](https://github.com/component/upl
 
 `component-install stagas/gallery`
 
+## Events
+
+  - `select` when user selects (clicks) an image
+  - `change`(newImage, oldImage) when user chooses a different image
+  - `files`(FileList) when user chooses files to upload
+  - `end` when user has ended interacting with the gallery
+  - `show` when gallery is shown
+  - `hide` when gallery is hidden
+
 ## API
 
   - [Gallery()](#gallery)
