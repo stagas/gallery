@@ -15,6 +15,7 @@ The test implements one with [component/upload](https://github.com/component/upl
   - [Gallery.set()](#gallerysetpathstringfilesarray)
   - [Gallery.add()](#galleryaddfilestring)
   - [Gallery.select()](#galleryselectindexnumber)
+  - [Gallery.render()](#galleryrender)
   - [Gallery.show()](#galleryshowelelement)
   - [Gallery.hide()](#galleryhide)
 
@@ -33,6 +34,10 @@ The test implements one with [component/upload](https://github.com/component/upl
 ### Gallery.select(index:Number)
 
   Selects an image.
+
+### Gallery.render()
+
+  Render gallery view.
 
 ### Gallery.show(el:Element)
 
