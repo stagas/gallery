@@ -93,7 +93,7 @@ Gallery.prototype.add = function (file) {
   events.bind(img, 'dblclick', function (ev) {
     self.onclick(ev)
     self.change()
-    self.emit('ok')
+    self.emit('end')
   })
 
   // images are inserted in reverse!
@@ -177,7 +177,7 @@ Gallery.prototype.render = function () {
 
   events.bind(find(this.el, '.gallery-ok'), 'click', function (ev) {
     self.change()
-    self.emit('ok')
+    self.emit('end')
   })
 
   this.files.forEach(function (file) {

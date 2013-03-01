@@ -73,9 +73,8 @@
       var dialog = new Dialog(gallery.el)
 
       // hide dialog when user
-      // chooses picture or clicks ok
-      gallery.on('ok', hide)
-      gallery.on('change', hide)
+      // is done selecting
+      gallery.on('end', hide)
 
       dialog
       .closable()
