@@ -1,7 +1,7 @@
 {
   "name": "gallery",
   "repo": "stagas/gallery",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "The UI piece for a potential gallery image selector/uploader",
   "keywords": ["gallery","image","uploader"],
   "author": "stagas",
