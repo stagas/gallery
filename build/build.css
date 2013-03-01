@@ -141,8 +141,8 @@
 }
 
 .gallery-images li img {
-  max-width: 60px;
   float: left;
+  max-width: 60px;
 }
 
 .gallery-active {
@@ -177,8 +177,8 @@
 }
 
 .gallery-upload {
-  width: 85%;
   float: left;
+  width: 85%;
   padding: 0;
   margin: 0;
 }
