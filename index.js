@@ -54,38 +54,6 @@ Gallery.prototype.set = function (path, files) {
 }
 
 /**
- * Render gallery view.
- *
- * @return {[type]} [description]
- * @api private
- */
-
-Gallery.prototype.render = function () {
-  var self = this
-
-  var html = require('./template')
-
-  this.el = domify(html)[0]
-
-  var fileInput = find(this.el, '.gallery-file-input')
-
-  events.bind(fileInput, 'change', function () {
-    self.emit('files', fileInput.files)
-  })
-
-  events.bind(find(this.el, '.gallery-ok'), 'click', function (ev) {
-    self.change()
-    self.emit('ok')
-  })
-
-  this.files.forEach(function (file) {
-    self.add(file)
-  })
-
-  return this
-}
-
-/**
  * Emit `change` if user has selected
  * a new image.
  *
@@ -184,6 +152,38 @@ Gallery.prototype.onclick = function (ev) {
   var index = this.images.indexOf(ev.target)
   this.select(index)
   return false
+}
+
+/**
+ * Render gallery view.
+ *
+ * @return {Object} this
+ * @api public
+ */
+
+Gallery.prototype.render = function () {
+  var self = this
+
+  var html = require('./template')
+
+  this.el = domify(html)[0]
+
+  var fileInput = find(this.el, '.gallery-file-input')
+
+  events.bind(fileInput, 'change', function () {
+    self.emit('files', fileInput.files)
+  })
+
+  events.bind(find(this.el, '.gallery-ok'), 'click', function (ev) {
+    self.change()
+    self.emit('ok')
+  })
+
+  this.files.forEach(function (file) {
+    self.add(file)
+  })
+
+  return this
 }
 
 /**
